@@ -14,7 +14,7 @@ export const creatingData = () => {
   export const createdData = (data) => {
     return {
       type: CREATED_DATA,
-      data: data
+      createdMessage: data
     }
   }
   
@@ -32,6 +32,8 @@ export const creatingData = () => {
         .post(`/api/v1/user/create`)
         .send(data)
         .then(res => {
+            console.log(res.body);
+            
           dispatch(createdData(res.body))
         })
         .catch(err => {

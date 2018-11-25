@@ -64,15 +64,20 @@ class ReactForm extends Component {
                 
                 </button>
 
-                
+                {console.log(this.props)}
+
+                <p>{this.props.message}</p>
 
             </React.Fragment>
-
-
         );
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+      message: state.createdData
+    }
+  }
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -82,4 +87,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(ReactForm)
+export default connect(mapStateToProps, mapDispatchToProps)(ReactForm)
