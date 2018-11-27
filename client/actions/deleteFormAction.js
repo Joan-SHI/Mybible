@@ -25,7 +25,7 @@ export const deletingData = () => {
   }
 
 
-export function deleteUser (id) {
+export function deleteData (id) {
 
     return (dispatch) => {
         dispatch(deletingData())

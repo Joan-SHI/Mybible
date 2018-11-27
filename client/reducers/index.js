@@ -5,11 +5,13 @@ import subreddits from './subreddits'
 import waiting from './waiting'
 import createdData from './createusers'
 import getUser from './getuser'
+import deleteData from './deleteData'
 
 export default combineReducers({
   createdData,
   errorMessage,
   subreddits,
   waiting,
-  getUser
+  getUser,
+  deleteData
 })

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import {DeleteData} from '../actions/DeleteData'
+import { connect } from 'react-redux';
+import {deleteFormAction} from '../actions/deleteFormAction'
 
 class DeleteForm extends Component {
     constructor(props) {
@@ -17,8 +17,14 @@ class DeleteForm extends Component {
     //handleSubmit
     handleSubmit(e) {
         e.preventDefault();
-        
+       const { name, age, area} =this.state;
+       const data = {
+           name: name,
+           age: age,
+           area: area
+       }
 
+       this.props.deleteData(data);
     }
 
     render() {
@@ -36,7 +42,25 @@ class DeleteForm extends Component {
         )
     }
 }
-export default DeleteForm
+
+const mapStateToProps = (state) => {
+    return {
+        message: state.deleteData
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        deleteData: data => {
+            return dispatch(deleteData(data));
+        }
+    }
+}
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteForm)
 
 
 
