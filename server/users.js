@@ -15,9 +15,13 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
+  console.log(req.params.id);
+  
   const id = Number(req.params.id)
   db.getUser(id)
     .then(user => {
+      console.log(user);
+      
       res.json({user: user})
     })
     .catch(err => {
@@ -30,7 +34,7 @@ router.post('/create', (req,res) => {
 
   db.saveUser(req.body)
   .then(ids => {
-    res.status(201).json({message: 'user created'})
+    res.status(201).json({message: ids})
   })
   .catch(err => {
     res.status(500).send('DATABASE ERROR: ' + err.message)
