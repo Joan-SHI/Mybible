@@ -50,8 +50,11 @@ class ReactForm extends Component {
 
     render() {
         return (
+            
             <React.Fragment>
+                
                 <form>
+                <h4>1.create new user</h4>
                     <input type='text' onChange={this.handleChange} name='name' />
                     <input type='text' onChange={this.handleChange} name='age' />
                     <input type='text' onChange={this.handleChange} name='area' />

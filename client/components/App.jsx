@@ -6,6 +6,7 @@ import SubredditList from './SubredditList'
 import WaitIndicator from './WaitIndicator'
 import ReactForm from './ReactForm'
 import ReadForm from './ReadForm'
+import DeleteForm from './DeleteForm'
 
 const App = () => (
   <div className='app'>
@@ -13,8 +14,9 @@ const App = () => (
     <LoadSubreddit />
     <WaitIndicator />
     <SubredditList />
-    {/* <ReactForm /> */}
+    <ReactForm />
     <ReadForm />
+    <DeleteForm />
   </div>
 )
 

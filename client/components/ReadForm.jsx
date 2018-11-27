@@ -59,6 +59,8 @@ this.handleGetUser = this.handleGetUser.bind(this)
     render() {
         return (
             <div>
+
+                <h4>2.Create new user again, really???</h4>
                 <form onSubmit={this.handleSubmit}>
                     <input onChange={this.handleChange} type="text" name="name" />
                     <input onChange={this.handleChange} type="number" name="age" />
@@ -68,15 +70,15 @@ this.handleGetUser = this.handleGetUser.bind(this)
 
                 {this.props.state.getUser.length > 0 && 
                 <p>ID: {this.props.state.getUser[0].id}, name: {this.props.state.getUser[0].name}, age: {this.props.state.getUser[0].age}, area: {this.props.state.getUser[0].area}</p>}
-                <h4>find user by id</h4>
+                <h4>3.find user by id  :)</h4>
                         <form onSubmit={this.handleGetUser}>
                             <input onChange={this.handleChange} name="id" placeholder="enter ID here" type="number"/>
                             <input type="submit" value="Submit"/>
                         </form>
-                        <h4>delete user by id</h4>
+                       
 
 
-                        <h4>Edit form for users </h4>
+                        <h4>5. Edit form for users </h4>
 
             </div>
 
