@@ -1,9 +1,9 @@
 import {DELETE_DATA} from '../actions/deleteFormAction'
 
-function deleteData (state = [], action) {
+function deleteUser (state = [], action) {
     switch (action.type) {
         case DELETE_DATA:
-        return action.deletedMessage.message
+        return state
 
         default:
         return state
@@ -12,4 +12,4 @@ function deleteData (state = [], action) {
 }
 
 
-export default deleteData
+export default deleteUser

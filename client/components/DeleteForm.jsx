@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {deleteFormAction} from '../actions/deleteFormAction'
+import {deleteUser} from '../actions/deleteFormAction'
 
 class DeleteForm extends Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class DeleteForm extends Component {
            area: area
        }
 
-       this.props.deleteData(data);
+       this.props.deleteUser(data);
     }
 
     render() {
@@ -33,7 +33,7 @@ class DeleteForm extends Component {
 
                 <h4>4. Delete user by id</h4>
 
-                <form onSubmit={this.handleDelete}>
+                <form onSubmit={this.handleSubmit}>
                     <input onChange={this.handleChange} name="id" placeholder="enter ID here" type="number" />
                     <input type="submit" value="Submit" />
                 </form>
@@ -45,14 +45,14 @@ class DeleteForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        message: state.deleteData
+        message: state.deleteUser
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteData: data => {
-            return dispatch(deleteData(data));
+        deleteUser: data => {
+            return dispatch(deleteUser(data));
         }
     }
 }

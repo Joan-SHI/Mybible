@@ -4,13 +4,13 @@ export const SHOW_ERROR = 'SHOW_ERROR'
 export const DELETE_DATA = 'DELETE_DATA'
 export const DELETED_DATA = 'DELETED_DATA'
 
-export const deletingData = () => {
+export const deletingUser = () => {
     return {
       type: DELETE_DATA
     }
   }
   
-  export const deletedData = (data) => {
+  export const deletedUser = (data) => {
     return {
       type: DELETED_DATA,
       deletedMessage: data
@@ -25,16 +25,16 @@ export const deletingData = () => {
   }
 
 
-export function deleteData (id) {
+export function deleteUser (id) {
 
     return (dispatch) => {
-        dispatch(deletingData())
+        dispatch(deletingUser())
         return request
         .get('/api/v1/user/${id}')
         .send(id)
         .then(res => {
             console.log(res.body);
-            dispatch(deletedData(res.body))
+            dispatch(deletedUser(res.body))
         })
         .catch(err => {
             dispatch(showError(err.message))
