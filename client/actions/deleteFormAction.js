@@ -30,7 +30,7 @@ export function deleteUser (id) {
     return (dispatch) => {
         dispatch(deletingUser())
         return request
-        .get('/api/v1/user/${id}')
+        .post(`/api/v1/user/${id}`)
         .send(id)
         .then(res => {
             console.log(res.body);

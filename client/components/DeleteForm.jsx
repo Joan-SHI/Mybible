@@ -6,25 +6,30 @@ class DeleteForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: '',
-            age: '',
-            area: ''
+            id: ''    
+            
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
 
     }
+//add handleChange
+handleChange(e) {
+    this.setState({
+        [e.target.name]: e.target.value
+    })
+}
+
     //handleSubmit
     handleSubmit(e) {
         e.preventDefault();
-       const { name, age, area} =this.state;
-       const data = {
-           name: name,
-           age: age,
-           area: area
-       }
+       const { id} =this.state;
+       
 
-       this.props.deleteUser(data);
+       this.props.deleteUser(id)
+       
+       
     }
 
     render() {
@@ -32,7 +37,7 @@ class DeleteForm extends Component {
             <div>
 
                 <h4>4. Delete user by id</h4>
-
+<p>{this.props.message}</p>
                 <form onSubmit={this.handleSubmit}>
                     <input onChange={this.handleChange} name="id" placeholder="enter ID here" type="number" />
                     <input type="submit" value="Submit" />
@@ -56,9 +61,6 @@ const mapDispatchToProps = dispatch => {
         }
     }
 }
-
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeleteForm)
 

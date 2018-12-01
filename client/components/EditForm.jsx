@@ -39,10 +39,10 @@ class EditForm extends Component {
             <React.Fragment>
                 <form>
                     <h4>5. Edit form for our lovely users </h4>
-                    <input type='text' onChange={this.handleChange} name='name' />
-                    <input type='text' onChange={this.handleChange} name='age' />
-                    <input type='text' onChange={this.handleChange} name='area' />
-                    <input type="submit" value="Submit" />
+                    <input type='text' onChange={this.handleChange} placeholder="name" name='name' />
+                    <input type='text' onChange={this.handleChange} placeholder="age" name='age' />
+                    <input type='text' onChange={this.handleChange} placeholder="area" name='area' />
+                    <input type="submit" onClick={this.handleClick} value="Submit" />
                 </form>
 
 

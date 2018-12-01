@@ -55,8 +55,9 @@ router.patch('/:id', (req,res) => {
   })
 })
 
-router.delete('/:id', (req,res) => {
+router.post('/:id', (req,res) => {
   const id = Number(req.params.id)
+  console.log('delete', id)
 
   db.deleteUser(id)
   .then(() => {
