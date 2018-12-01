@@ -24,7 +24,8 @@ export const showError = (errorMessage) => {
     }
 }
 
-export function EditForm(data) {
+export function editUser(data) {
+    console.log(data)
     return (dispatch) => {
         dispatch(editingData())
         return request

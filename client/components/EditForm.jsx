@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-//import { connect } from 'react-redux';
-//import { EditData } from '../actions/EditData' 
+import { connect } from 'react-redux';
+import { editUser } from '../actions/EditForm' 
 
 class EditForm extends Component {
     constructor(props) {
@@ -8,7 +8,8 @@ class EditForm extends Component {
         this.state = {
             name: '',
             age: '',
-            area: ''
+            area: '',
+            id: ''
         }
 
         this.handleClick = this.handleClick.bind(this)
@@ -24,34 +25,44 @@ class EditForm extends Component {
 
     handleClick(e) {
         e.preventDefault();
-        const { name, age, area } = this.state;
+        const { name, age, area, id } = this.state;
         const data = {
-            name: name,
-            age: age,
-            area: area
+            name,
+            age,
+            area,
+            id
         }
-        this.props.EditForm(data);
+
+        this.props.editUser(data);
 
     }
 
     render() {
         return (
-            <React.Fragment>
                 <form>
                     <h4>5. Edit form for our lovely users </h4>
                     <input type='text' onChange={this.handleChange} placeholder="name" name='name' />
                     <input type='text' onChange={this.handleChange} placeholder="age" name='age' />
                     <input type='text' onChange={this.handleChange} placeholder="area" name='area' />
+                    <input type='text' onChange={this.handleChange} placeholder="id" name='id' />
                     <input type="submit" onClick={this.handleClick} value="Submit" />
                 </form>
-
-
-            </React.Fragment>
-
         )
     }
-
-
 }
 
-export default EditForm
+const mapStateToProps = (state) => {
+    return {
+        message: state.deleteUser
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        editUser: data => {
+            return dispatch(editUser(data));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditForm)

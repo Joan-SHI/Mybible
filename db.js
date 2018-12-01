@@ -27,7 +27,6 @@ function saveUser(user, testDb) {
 
 function deleteUser(id, testDb) {
   const db = testDb || connection
-  console.log('db function' + id)
   return db('users').where('id', id).del()
 }
 

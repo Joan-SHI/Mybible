@@ -46,7 +46,7 @@ router.patch('/:id', (req,res) => {
 
   const user = req.body
 
-  db.updateUser(id, user)
+  db.updateUser(user.id, user)
   .then(() => {
     res.json({message: 'Done'})
   })
