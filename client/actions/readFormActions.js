@@ -13,10 +13,20 @@ export function getUser (id) {
         .send(id)
         .then(res => {
             console.log(res.body);
+            
           dispatch(userGet(res.body))
         })
         .catch(err => {
+          dispatch(showError(err.message))
+
         })
+    }
+  }
+
+  export const showError = (errorMessage) => {
+    return {
+      type: 'SHOW_ERROR',
+      errorMessage: errorMessage
     }
   }
 

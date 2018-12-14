@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 //import action 
-import {getUser} from '../actions/readFormActions' 
-import {CreateData} from '../actions/CreateData'
+import { getUser } from '../actions/readFormActions'
+import { CreateData } from '../actions/CreateData'
 
 
 
@@ -11,16 +11,20 @@ class ReadForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name:'',
-            age:'',
-            area:'',
+            name: '',
+            age: '',
+            area: '',
             id: ''
         }
-this.handleChange = this.handleChange.bind(this)
-this.handleSubmit = this.handleSubmit.bind(this)
-this.handleGetUser = this.handleGetUser.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleGetUser = this.handleGetUser.bind(this)
     }
+//need to review this code
 
+        componentDidMount() {
+            this.props.getUser(1)
+        }
 
     handleChange(event) {
         this.setState({
@@ -28,9 +32,9 @@ this.handleGetUser = this.handleGetUser.bind(this)
         })
     }
 
-    handleGetUser(event){
+    handleGetUser(event) {
         console.log(event.target.value);
-        
+
         event.preventDefault()
         this.props.getUser(Number(this.state.id))
     }
@@ -38,7 +42,6 @@ this.handleGetUser = this.handleGetUser.bind(this)
     handleSubmit(event) {
         event.preventDefault();
         //send the this.state contents to your action
-       
         //action function
         const { name, age, area } = this.state;
         const data = {
@@ -68,17 +71,19 @@ this.handleGetUser = this.handleGetUser.bind(this)
                     <input type="submit" value="Submit" />
                 </form>
 
-                {this.props.state.getUser.length > 0 && 
-                <p>ID: {this.props.state.getUser[0].id}, name: {this.props.state.getUser[0].name}, age: {this.props.state.getUser[0].age}, area: {this.props.state.getUser[0].area}</p>}
+                {console.log(this.props.state.getUser[0])}
+                {this.props.state.getUser[0] == undefined && this.state.id !== '' && <p style={{ color: 'red' }}>User doesn't exist</p>}
+                {this.props.state.getUser[0] !== undefined &&
+                    <p>ID: {this.props.state.getUser[0].id}, name: {this.props.state.getUser[0].name}, age: {this.props.state.getUser[0].age}, area: {this.props.state.getUser[0].area}</p>}
                 <h4>3.find user by id  :)</h4>
-                        <form onSubmit={this.handleGetUser}>
-                            <input onChange={this.handleChange} name="id" placeholder="enter ID here" type="number"/>
-                            <input type="submit" value="Submit"/>
-                        </form>
-                       
+                <form onSubmit={this.handleGetUser}>
+                    <input onChange={this.handleChange} name="id" placeholder="enter ID here" type="number" />
+                    <input type="submit" value="Submit" />
+                </form>
 
 
-                        
+
+
 
             </div>
 
@@ -93,7 +98,7 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
     return {
         getUser: (id) => {
             dispatch(getUser(id))
